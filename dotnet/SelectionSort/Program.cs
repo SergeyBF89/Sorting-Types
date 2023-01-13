@@ -1,36 +1,19 @@
-﻿// MIN -> MAX перебор массива
-// 0 1 2 3 4 5 6 7   индексы
-// v
-// 7 6 3 4 5 1 2 3   изначальный массив
-//           ^
-// 1 6 3 4 5 7 2 3   <- после первого перебора 1
-//   v
-// 1 6 3 4 5 7 2 3
-//             ^
-// 1 2 3 4 5 7 6 3   <- после второго перебора 2
-//     v
-// 1 2 3 4 5 7 6 3
-//     ^
-// 1 2 3 4 5 7 6 3   <- после третьего перебора 3
-//       v
-// 1 2 3 4 5 7 6 3
-//               ^
-// 1 2 3 3 5 6 7 4   <- после четвертого перебора 4
-//         v
-// 1 2 3 3 5 6 7 4
-//               ^
-// 1 2 3 3 4 6 7 5   <- после пятого перебора 5
-//           v
-// 1 2 3 3 4 6 7 5
-//               ^
-// 1 2 3 3 4 5 7 6   <- после шестого перебора 6
-//             v
-// 1 2 3 3 4 5 7 6
-//               ^
-// 1 2 3 3 4 5 6 7   <- после седьмого перебора 7 
-//               v
-// 1 2 3 3 4 5 6 7
-//               ^
-// 1 2 3 3 4 5 6 7   <- перебранный массив 8
-
-
+﻿void SortSelection(int[] collection)
+{
+    int size = collection.Length; 
+    for(int i = 0; i < size - 1; i++)
+    {
+        int pos = i;
+        for(int j = i + 1; j < size; j++)
+        {
+            if(collection[j] < collection[pos]) pos = j;
+        }
+        int temp = collection[i];
+        collection[i] = collection[pos];
+        collection[pos] = temp;
+    }
+}
+int[] array = {7, 6, 3, 4, 5, 1, 2, 3};
+Console.WriteLine($"[{string.Join(',', array)}]");
+SortSelection(array);
+Console.WriteLine($"[{string.Join(',', array)}]");
